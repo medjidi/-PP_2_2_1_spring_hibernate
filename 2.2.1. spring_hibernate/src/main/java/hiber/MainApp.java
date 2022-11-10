@@ -16,10 +16,30 @@ public class MainApp {
 
       UserService userService = context.getBean(UserService.class);
 
-      userService.add(new User("User1", "Lastname1", "user1@mail.ru", new Car("Audi", 8)));
-      userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
-      userService.add(new User("User3", "Lastname3", "user3@mail.ru"));
-      userService.add(new User("User4", "Lastname4", "user4@mail.ru"));
+      User user1 = new User("User1", "Lastname1", "user1@mail.ru");
+      Car car = new Car("Audi", 8);
+      user1.setCar(car);
+      userService.add(user1);
+
+      User user2 = new User("Balbes", "Myasnitski", "balbesik@gmail.com");
+      user2.setCar(new Car("Bently", 1000));
+
+
+      userService.add(user2);
+
+      User user3 = new User("Abulbas", "Tigrulatov", "tiger@gmail.com");
+      user3.setCar(new Car("Mercedes", 10));
+
+      userService.add(user3);
+
+      User user4 = new User("Rasiel", "Weapon", "poluchaiRasiel@gmail.com");
+      user4.setCar(new Car("Lada Granta Sport", 0));
+
+      userService.add(user4);
+
+      User oldUser = userService.getUserByCar("Mercedes",10);
+
+      System.out.println(oldUser.getFirstName());
 
       List<User> users = userService.listUsers();
       for (User user : users) {
@@ -27,6 +47,11 @@ public class MainApp {
          System.out.println("First Name = "+user.getFirstName());
          System.out.println("Last Name = "+user.getLastName());
          System.out.println("Email = "+user.getEmail());
+         if (user.getCar()!=null){
+            System.out.println("Car Id = " + user.getCar().getId());
+            System.out.println("Car model = " + user.getCar().getModel());
+            System.out.println("Car series = " + user.getCar().getSeries());
+         }
          System.out.println();
       }
       context.close();
