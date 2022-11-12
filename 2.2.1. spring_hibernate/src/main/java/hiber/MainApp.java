@@ -20,28 +20,35 @@ public class MainApp {
       Car car = new Car("Audi", 8);
       user1.setCar(car);
       userService.add(user1);
+      System.out.println("1");
 
       User user2 = new User("Balbes", "Myasnitski", "balbesik@gmail.com");
       user2.setCar(new Car("Bently", 1000));
+      System.out.println("2");
 
 
       userService.add(user2);
+      System.out.println("3");
 
       User user3 = new User("Abulbas", "Tigrulatov", "tiger@gmail.com");
       user3.setCar(new Car("Mercedes", 10));
+      System.out.println("4");
 
       userService.add(user3);
+      System.out.println("5");
 
       User user4 = new User("Rasiel", "Weapon", "poluchaiRasiel@gmail.com");
       user4.setCar(new Car("Lada Granta Sport", 0));
+      System.out.println("1");
 
       userService.add(user4);
+      System.out.println("1");
 
       User oldUser = userService.getUserByCar("Mercedes",10);
 
       System.out.println(oldUser.getFirstName());
 
-      List<User> users = userService.listUsers();
+      List<User> users = userService.getListUsers();
       for (User user : users) {
          System.out.println("Id = "+user.getId());
          System.out.println("First Name = "+user.getFirstName());
